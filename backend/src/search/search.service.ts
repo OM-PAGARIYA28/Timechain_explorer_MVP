@@ -57,4 +57,26 @@ export class SearchService {
             throw new Error(`Failed to fetch transaction by hash: ${error.message}`);
         }
     }
+
+    async searchByAddress(address: string): Promise<any>{
+        try {
+            const history = await firstValueFrom(
+                this.httpService.get(`https://api.whatsonchain.com/v1/bsv/main/address/${address}/history`)
+            );
+
+            const balance = await firstValueFrom(
+                this.httpService.get(`https://api.whatsonchain.com/v1/bsv/main/address/${address}/balance`)
+            );
+
+            const data = {
+                Address:address,
+                Balance: balance.data,
+                History: history.data,
+                
+            }
+            return data;
+        } catch (error) {
+            throw new Error(`Failed to fetch transaction by hash: ${error.message}`);
+        }
+    }
 }
