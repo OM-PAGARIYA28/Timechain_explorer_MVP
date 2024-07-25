@@ -8,7 +8,6 @@ export class SearchController{
     @Get('block')
     async block(@Body() searchData: SearchDto){
         if(typeof searchData.search === 'number'){
-            console.log(searchData.search)
             return this.searchsevice.searchByBlockHeight(searchData.search);
         }
         else{
@@ -22,4 +21,12 @@ export class SearchController{
             return this.searchsevice.searchByTransaction(searchData.search);
         }else return 'Invalid transaction hash';
     }
+
+    @Get('address')
+    address(@Body() searchData: SearchDto){
+        if(typeof searchData.search === 'string'){
+            return this.searchsevice.searchByAddress(searchData.search);
+        }else return 'Invalid address';
+    }
+
 }
