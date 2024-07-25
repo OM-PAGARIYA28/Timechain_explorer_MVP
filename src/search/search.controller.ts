@@ -7,17 +7,19 @@ export class SearchController{
     constructor(private readonly searchsevice: SearchService){}
     @Get('block')
     async block(@Body() searchData: SearchDto){
-        console.log(searchData.searchData);
-        console.log(typeof searchData.searchData);
-        if(typeof searchData.searchData === 'number'){
-            console.log(searchData.searchData)
-            return this.searchsevice.searchByBlockHeight(searchData.searchData);
+        if(typeof searchData.search === 'number'){
+            console.log(searchData.search)
+            return this.searchsevice.searchByBlockHeight(searchData.search);
         }
         else{
-            return this.searchsevice.searchByBlockHash(searchData.searchData);
+            return this.searchsevice.searchByBlockHash(searchData.search);
         }
     }
 
-    // @Get('transaction')
-    // transaction(@Body() data)
+    @Get('transaction')
+    transaction(@Body() searchData: SearchDto){
+        if(typeof searchData.search === 'string'){
+            return this.searchsevice.searchByTransaction(searchData.search);
+        }else return 'Invalid transaction hash';
+    }
 }
