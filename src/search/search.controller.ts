@@ -6,7 +6,7 @@ import { SearchDto } from "./dto/search.dto";
 export class SearchController{
     constructor(private readonly searchsevice: SearchService){}
     @Get('block')
-    block(@Body() searchData: SearchDto){
+    async block(@Body() searchData: SearchDto){
         console.log(searchData.searchData);
         console.log(typeof searchData.searchData);
         if(typeof searchData.searchData === 'number'){
@@ -14,7 +14,7 @@ export class SearchController{
             return this.searchsevice.searchByBlockHeight(searchData.searchData);
         }
         else{
-            return this.searchsevice.searchByBlockHash();
+            return this.searchsevice.searchByBlockHash(searchData.searchData);
         }
     }
 
