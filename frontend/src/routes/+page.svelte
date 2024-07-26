@@ -1,12 +1,12 @@
 <script>
     export let form;
 </script>
-<section class="bg-white dark:bg-gray-900">
+{#if form?.called}
+<section class="bg-white dark:bg-gray-900 mb-4">
     <div class="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 lg:px-12">
-        {#if form?.called}
         {#if form?.resultis.type === 'transaction'}
             <div class="text-left">
-                <p class="pt-2 text-green-600 mb-5">Transaction fetched successfully!</p>
+                <p class="pt-2 text-green-600 mb-5 text-3xl font-bold">Transaction fetched successfully!</p>
                 <p class="text-white mb-2"><strong class="text-yellow-600">Transaction Id:</strong> {form?.resultis.body.data.txid}</p>
                 <p class="text-white mb-2"><strong class="text-yellow-600">Amount:</strong> {form?.resultis.body.data.amount}</p>
                 <p class="text-white mb-2"><strong class="text-yellow-600">BlockHash:</strong> {form?.resultis.body.data.blockHash}</p>
@@ -26,14 +26,14 @@
                 </div>
             </div>
         {/if}
-    {/if}
+    
     
     
     
 
     {#if form?.called && form?.resultis.type === 'block'}
     <div class="text-left">
-        <p class="pt-2 text-green-600 mb-5">Block details fetched successfully!</p>
+        <p class="pt-2 text-green-600 mb-5 text-3xl font-bold">Block details fetched successfully!</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">Block Height:</strong> {form?.resultis.body.data.blockHeight}</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">Timestamp:</strong> {form?.resultis.body.data.timestamp}</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">Number of Transactions:</strong> {form?.resultis.body.data.numberOfTransactions}</p>
@@ -42,7 +42,7 @@
         <p class="text-white mt-2"><strong class="text-yellow-600">Transaction Ids:</strong></p>
         <ul>
             {#each form?.resultis.body.data.txs as txid}
-                <li class="text-white">{txid}</li>
+                <li class="text-white">{txid+", "}</li>
             {/each}
         </ul>
     </div>
@@ -50,7 +50,7 @@
 
 {#if form?.called && form?.resultis.type === 'address'}
     <div class="text-left">
-        <p class="pt-2 text-green-600 mb-5">Address details fetched successfully!</p>
+        <p class="pt-2 text-green-600 mb-5 text-3xl font-bold">Address details fetched successfully!</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">Address:</strong> {form?.resultis.body.data.Address}</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">Balance:</strong> {JSON.stringify(form?.resultis.body.data.Balance)}</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">History:</strong></p>
@@ -64,7 +64,7 @@
 
 {#if form?.called && form?.resultis.type === 'error'}
     <div class="text-left">
-        <p class="pt-2 text-red-600">
+        <p class="pt-2 text-red-600 text-3xl font-bold">
             <strong class="text-white">Error:</strong> 'Invalid Input'
         </p>
     </div>
@@ -72,3 +72,4 @@
 
     </div>
 </section>
+{/if}

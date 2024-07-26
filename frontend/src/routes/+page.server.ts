@@ -7,7 +7,6 @@ export const actions = {
         const search = data.get('search');
         if(search === null) return { status: 400, body: { error: 'No search query' } };
         if (search instanceof File) {
-            console.log('Invalid search parameter: expected a string, got a File');
             return { status: 400, body: { error: 'Invalid search parameter: expected a string, got a File' } };
         }
         const trimmedSearch = search.trim();
@@ -24,7 +23,6 @@ export const actions = {
         else{
             result=  Error(trimmedSearch)
         }
-        console.log(result);
         return {called:true ,resultis:result};
     },
 };
