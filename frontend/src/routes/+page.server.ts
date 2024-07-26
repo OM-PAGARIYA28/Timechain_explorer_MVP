@@ -1,4 +1,4 @@
-import { callByBlock, callByAddress, callByTransaction } from '$lib/utils/index.ts';
+import { callByBlock, callByAddress, callByTransaction,Error } from '$lib/utils/index.ts';
 
 /** @type {import('./$types').Actions} */
 export const actions = {
@@ -12,16 +12,19 @@ export const actions = {
         }
         const trimmedSearch = search.trim();
         let result;
-        if (!isNaN(Number(trimmedSearch)) || /^0{6}/.test(trimmedSearch)){
+        if (!isNaN(Number(trimmedSearch)) || (/^0{6}/.test(trimmedSearch) && search.length==64) ){
             result = await callByBlock(trimmedSearch);
         }
         else if(trimmedSearch.length > 20 && trimmedSearch.length < 40){
             result = await callByAddress(trimmedSearch);
         }
-        else{
+        else if(search.length==64){
             result = await callByTransaction(trimmedSearch);
         }
-        console.log(result.body.data);
+        else{
+            result=  Error(trimmedSearch)
+        }
+        console.log(result);
         return result;
     },
 };
