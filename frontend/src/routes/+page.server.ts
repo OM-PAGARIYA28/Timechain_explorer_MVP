@@ -25,6 +25,6 @@ export const actions = {
             result=  Error(trimmedSearch)
         }
         console.log(result);
-        return result;
+        return {called:true ,resultis:result};
     },
 };
