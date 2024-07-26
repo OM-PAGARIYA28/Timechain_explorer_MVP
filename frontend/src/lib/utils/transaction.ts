@@ -1,6 +1,8 @@
+import { BACKEND_URL } from "$env/static/private";
 export async function callByTransaction(search: string): Promise<any> {
     try {
-        const response = await fetch(`http://localhost:3000/api/search/transaction/${search}`);
+        const url = `${BACKEND_URL}/api/search/transaction/${search}`;
+        const response = await fetch(url);
         const result = await response.json();
 
         let er=true;
