@@ -37,12 +37,13 @@
       </svg>
     </button>
     <div class="hidden w-full md:flex md:items-center md:w-auto" id="navbar-default">
-      <form class="flex items-center ml-auto">
+      <form class="flex items-center ml-auto" id="search-form" action="?/apiCall" method="post">
         <label for="search" class="sr-only">Search</label>
         <div class="relative w-80">
           <input
             type="text"
             id="search"
+            name="search"
             class="block w-full p-2 pl-10 text-sm text-gray-900 border border-transparent rounded-full bg-gradient-to-r from-blue-50 to-blue-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none shadow-md transition duration-300 ease-in-out transform hover:scale-105"
             placeholder="Search..."
           />
@@ -64,6 +65,12 @@
             </svg>
           </div>
         </div>
+        <button
+          type="submit"
+          class="ml-3 p-2 text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-300 ease-in-out transform hover:scale-105 shadow-md"
+        >
+          Search
+        </button>
       </form>
     </div>
   </div>

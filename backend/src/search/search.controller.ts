@@ -1,32 +1,43 @@
-import { Body, Controller, Get } from "@nestjs/common";
+import { Controller, Get, Param, BadRequestException } from "@nestjs/common";
 import { SearchService } from "./search.service";
-import { SearchDto } from "./dto/search.dto";
 
 @Controller('api/search')
-export class SearchController{
-    constructor(private readonly searchsevice: SearchService){}
-    @Get('block')
-    async block(@Body() searchData: SearchDto){
-        if(typeof searchData.search === 'number'){
-            return this.searchsevice.searchByBlockHeight(searchData.search);
+export class SearchController {
+    constructor(private readonly searchService: SearchService) {}
+
+    @Get('block/:search')
+    async block(@Param('search') search: string) {
+        if (!search || typeof search !== 'string') {
+            throw new BadRequestException('Search parameter must be a non-empty string');
         }
-        else{
-            return this.searchsevice.searchByBlockHash(searchData.search);
+
+        if (!isNaN(Number(search))) {
+            return this.searchService.searchByBlockHeight(Number(search));
+        } else {
+            return this.searchService.searchByBlockHash(search);
         }
     }
 
-    @Get('transaction')
-    transaction(@Body() searchData: SearchDto){
-        if(typeof searchData.search === 'string'){
-            return this.searchsevice.searchByTransaction(searchData.search);
-        }else return 'Invalid transaction hash';
+    @Get('transaction/:search')
+    async transaction(@Param('search') search: string) {
+        if (!search || typeof search !== 'string') {
+            throw new BadRequestException('Search parameter must be a non-empty string');
+        }
+
+        return this.searchService.searchByTransaction(search);
     }
 
-    @Get('address')
-    address(@Body() searchData: SearchDto){
-        if(typeof searchData.search === 'string'){
-            return this.searchsevice.searchByAddress(searchData.search);
-        }else return 'Invalid address';
+    @Get('address/:search')
+    async address(@Param('search') search: string) {
+        if (!search || typeof search !== 'string') {
+            throw new BadRequestException('Search parameter must be a non-empty string');
+        }
+
+        return this.searchService.searchByAddress(search);
     }
 
+    @Get('*')
+    async handleAll() {
+        throw new BadRequestException('Invalid route');
+    }
 }
