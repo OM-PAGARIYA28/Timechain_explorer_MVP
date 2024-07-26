@@ -45,7 +45,7 @@
             id="search"
             name="search"
             class="block w-full p-2 pl-10 text-sm text-gray-900 border border-transparent rounded-full bg-gradient-to-r from-blue-50 to-blue-100 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 focus:outline-none shadow-md transition duration-300 ease-in-out transform hover:scale-105"
-            placeholder="Search..."
+            placeholder="Search Block/Transaction/Address"
           />
           <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
             <svg
