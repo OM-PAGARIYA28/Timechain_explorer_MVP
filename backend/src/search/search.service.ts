@@ -8,7 +8,7 @@ export class SearchService {
 
     cleanData(data: any): any {
         return {
-            blockHash: data.blockhash,
+            blockHash: data.hash,
             blockHeight: data.height,
             timestamp: data.time,
             numberOfTransactions: data.txcount,
@@ -27,7 +27,7 @@ export class SearchService {
             throw new Error(`Failed to fetch block by height: ${error.message}`);
         }
     }
-
+    
     async searchByBlockHeight(blockHeight: number): Promise<any> {
         try {
             const response = await firstValueFrom(

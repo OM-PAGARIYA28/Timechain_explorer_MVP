@@ -34,6 +34,7 @@
     {#if form?.called && form?.resultis.type === 'block'}
     <div class="text-left">
         <p class="pt-2 text-green-600 mb-5 text-3xl font-bold">Block details fetched successfully!</p>
+        <p class="text-white mb-2"><strong class="text-yellow-600">Block Hash:</strong> {form?.resultis.body.data.blockHash}</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">Block Height:</strong> {form?.resultis.body.data.blockHeight}</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">Timestamp:</strong> {form?.resultis.body.data.timestamp}</p>
         <p class="text-white mb-2"><strong class="text-yellow-600">Number of Transactions:</strong> {form?.resultis.body.data.numberOfTransactions}</p>
