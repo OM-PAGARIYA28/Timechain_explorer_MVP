@@ -2,7 +2,7 @@
     export let form;
 </script>
 
-<div class="p-6 bg-gray-800 rounded-lg shadow-lg text-left">
+<div class="p-6 bg-gray-800 rounded-lg shadow-lg text-left mb-16">
     <p class="pt-2 text-green-600 mb-5 text-3xl font-bold">Transaction fetched successfully!</p>
     
     <div class="mb-4">
@@ -16,15 +16,15 @@
             <tbody>
                 <tr class="text-white">
                     <td class="border-t border-gray-700 px-4 py-2">Transaction Id</td>
-                    <td class="border-t border-gray-700 px-4 py-2">{form?.resultis.body.data.txid}</td>
+                    <td class="border-t border-gray-700 px-4 py-2 whitespace-pre-wrap break-all">{form?.resultis.body.data.txid}</td>
                 </tr>
                 <tr class="text-white">
                     <td class="border-t border-gray-700 px-4 py-2">Amount</td>
-                    <td class="border-t border-gray-700 px-4 py-2">{form?.resultis.body.data.amount}</td>
+                    <td class="border-t border-gray-700 px-4 py-2 whitespace-pre-wrap break-all">{form?.resultis.body.data.amount}</td>
                 </tr>
                 <tr class="text-white">
                     <td class="border-t border-gray-700 px-4 py-2">BlockHash</td>
-                    <td class="border-t border-gray-700 px-4 py-2">{form?.resultis.body.data.blockHash}</td>
+                    <td class="border-t border-gray-700 px-4 py-2 whitespace-pre-wrap break-all">{form?.resultis.body.data.blockHash}</td>
                 </tr>
             </tbody>
         </table>
@@ -105,7 +105,7 @@
                             </tr>
                             <tr class="text-white">
                                 <td class="border-t border-gray-700 px-4 py-2 font-bold">Addresses</td>
-                                <td class="border-t border-gray-700 px-4 py-2">
+                                <td class="border-t border-gray-700 px-4 py-2 whitespace-pre-wrap break-all">
                                     {#each output.scriptPubKey.addresses as address}
                                         <p>{address}</p>
                                     {/each}
