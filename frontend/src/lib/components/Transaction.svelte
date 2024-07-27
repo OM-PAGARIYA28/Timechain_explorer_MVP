@@ -2,7 +2,7 @@
     export let form;
 </script>
 
-<div class="p-6 bg-gray-800 rounded-lg shadow-lg text-left mb-16">
+<div class="p-6 bg-gray-800 rounded-lg shadow-lg text-left">
     <p class="pt-2 text-green-600 mb-5 text-3xl font-bold">Transaction fetched successfully!</p>
     
     <div class="mb-4">
@@ -124,3 +124,4 @@
         {/if}
     </div>
 </div>
+<div class=" lg:hidden h-[15vh]"></div>

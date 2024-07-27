@@ -2,7 +2,7 @@
     export let form;
 </script>
 
-<div class="p-6 bg-gray-800 rounded-lg shadow-lg mb-16"> <!-- Added mb-16 to ensure space for the footer -->
+<div class="p-6 bg-gray-800 rounded-lg shadow-lg">
     <p class="pt-2 text-green-600 mb-5 text-3xl font-bold md:text-4xl">Address details fetched successfully!</p>
     
     <div class="mb-4">
@@ -52,3 +52,5 @@
         </div>
     </div>
 </div>
+<div class=" lg:hidden h-[15vh]"></div>
+

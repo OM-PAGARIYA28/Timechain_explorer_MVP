@@ -14,3 +14,4 @@
         <p class="text-white mb-4">If the issue persists, please contact support.</p>
     </div>
 </div>
+<div class=" md:hidden h-[15vh]"></div>
